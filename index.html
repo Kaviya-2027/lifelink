@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLink | Blood Donor Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LANDING PAGE ================= -->
+
+<div id="landingPage" class="landing-page">
+
+    <nav class="landing-nav">
+        <div class="brand">
+            <span class="brand-icon">🩸</span>
+            <span>LifeLink</span>
+        </div>
+
+        <button class="login-btn" onclick="showLogin()">
+            Login
+        </button>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                🩸 Real-Time Blood Donor Network
+            </div>
+
+            <h1>
+                Every Drop Can
+                <span>Save a Life.</span>
+            </h1>
+
+            <p>
+                LifeLink connects blood donors, receivers and hospitals
+                with smart real-time matching based on blood group,
+                availability and distance.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="showLogin()">
+                    Find a Blood Donor →
+                </button>
+
+                <button class="secondary-btn" onclick="showLogin('donor')">
+                    Become a Donor
+                </button>
+            </div>
+
+            <div class="hero-stats">
+                <div>
+                    <strong>1,248+</strong>
+                    <span>Available Donors</span>
+                </div>
+
+                <div>
+                    <strong>26</strong>
+                    <span>Partner Hospitals</span>
+                </div>
+
+                <div>
+                    <strong>3,842+</strong>
+                    <span>Lives Supported</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="blood-card">
+
+                <div class="blood-card-top">
+                    <span>🚨</span>
+                    <span class="live">● LIVE</span>
+                </div>
+
+                <h3>Emergency Request</h3>
+
+                <div class="blood-type-big">
+                    O+
+                </div>
+
+                <p>2 Units Required</p>
+
+                <div class="hospital-info">
+                    🏥 XYZ Multispeciality Hospital
+                </div>
+
+                <div class="matching">
+                    <span>Smart matching</span>
+                    <strong>96%</strong>
+                </div>
+
+                <div class="fake-progress">
+                    <div></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<div id="loginPage" class="login-page hidden">
+
+    <div class="login-card">
+
+        <button class="back-btn" onclick="showLanding()">
+            ← Back
+        </button>
+
+        <div class="login-logo">
+            🩸
+        </div>
+
+        <h1>Welcome to LifeLink</h1>
+
+        <p>
+            Choose how you want to use LifeLink
+        </p>
+
+        <div class="role-selection">
+
+            <button class="role-card" onclick="selectRole('donor')">
+
+                <div class="role-icon">🩸</div>
+
+                <div>
+                    <strong>Donor</strong>
+                    <span>I want to donate blood</span>
+                </div>
+
+            </button>
+
+
+            <button class="role-card" onclick="selectRole('receiver')">
+
+                <div class="role-icon">🚑</div>
+
+                <div>
+                    <strong>Receiver</strong>
+                    <span>I need blood</span>
+                </div>
+
+            </button>
+
+
+            <button class="role-card" onclick="selectRole('admin')">
+
+                <div class="role-icon">🛡️</div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <span>Manage LifeLink</span>
+                </div>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= DONOR DASHBOARD ================= -->
+
+<div id="donorDashboard" class="dashboard hidden">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+            <div class="sidebar-logo">
+                <span class="brand-drop">🩸</span> <span>LifeLink</span>
+            </div>
+
+            <button class="menu-toggle-btn" onclick="toggleSidebarMenu(this)" aria-label="Open menu">
+                ⋮
+            </button>
+        </div>
+
+        <div class="sidebar-menu-dropdown">
+
+            <p class="menu-title">DONOR</p>
+
+            <button class="menu active">
+                <span class="menu-icon">📊</span> <span>Dashboard</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🚨</span> <span>Blood Requests</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🩸</span> <span>My Donations</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🏆</span> <span>Rewards</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">👤</span> <span>My Profile</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">⚙️</span> <span>Settings</span>
+            </button>
+            <div class="menu-divider"></div>
+
+            <button class="logout" onclick="logout()">
+                <span class="menu-icon">↪</span> <span>Logout</span>
+            </button>
+
+        </div>
+
+
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Donor Dashboard</h1>
+                <p>Welcome back, Janani 👋</p>
+            </div>
+
+            <div class="header-profile">
+                <div class="avatar">JR</div>
+
+                <div>
+                    <strong>Janani</strong>
+                    <small>Blood Donor</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- DONOR STATUS -->
+
+        <section class="donor-status">
+
+            <div>
+                <span class="status-dot"></span>
+                <strong id="donorStatusText">
+                    You are Available
+                </strong>
+
+                <p>
+                    Nearby emergency requests can reach you.
+                </p>
+            </div>
+
+            <label class="switch">
+                <input
+                    type="checkbox"
+                    id="availabilityToggle"
+                    checked
+                    onchange="changeAvailability()"
+                >
+
+                <span class="slider"></span>
+            </label>
+
+        </section>
+
+
+        <!-- DONOR STATS -->
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <span>🩸</span>
+                <p>Blood Group</p>
+                <h2>O+</h2>
+            </div>
+
+            <div class="stat">
+                <span>📍</span>
+                <p>Current Radius</p>
+                <h2>10 km</h2>
+            </div>
+
+            <div class="stat">
+                <span>🏆</span>
+                <p>Donations</p>
+                <h2>8</h2>
+            </div>
+
+            <div class="stat">
+                <span>❤️</span>
+                <p>Lives Supported</p>
+                <h2>24</h2>
+            </div>
+
+        </div>
+
+
+        <!-- EMERGENCY REQUEST -->
+
+        <section class="dashboard-card emergency-request">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>🚨 Nearby Emergency Request</h2>
+                    <p>Someone nearby needs your help</p>
+                </div>
+
+                <span class="critical-badge">
+                    CRITICAL
+                </span>
+
+            </div>
+
+
+            <div class="request-body">
+
+                <div class="blood-circle">
+                    O+
+                </div>
+
+                <div class="request-details">
+
+                    <h2>2 Units Required</h2>
+
+                    <p>
+                        🏥 XYZ Multispeciality Hospital
+                    </p>
+
+                    <p>
+                        📍 2.4 km away
+                    </p>
+
+                    <p>
+                        ⏱ Required within 30 minutes
+                    </p>
+
+                </div>
+
+                <div class="request-actions">
+
+                    <button
+                        class="accept-btn"
+                        onclick="acceptRequest()">
+                        ✓ Accept
+                    </button>
+
+                    <button
+                        class="decline-btn"
+                        onclick="declineRequest()">
+                        Decline
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DONOR INFORMATION -->
+
+        <div class="two-column">
+
+            <section class="dashboard-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>📍 Your Location</h2>
+                        <p>Used only for donor matching</p>
+                    </div>
+
+                    <button
+                        class="small-btn"
+                        onclick="getLocation()">
+                        Update
+                    </button>
+                </div>
+
+                <div class="location-box">
+
+                    <div class="location-icon">
+                        📍
+                    </div>
+
+                    <div>
+                        <strong id="locationText">
+                            Chennai, Tamil Nadu
+                        </strong>
+
+                        <span>
+                            Location active
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>🕒 Donation Eligibility</h2>
+                        <p>Your donation information</p>
+                    </div>
+
+                </div>
+
+                <div class="eligibility">
+
+                    <div class="eligibility-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Eligible to Donate</strong>
+                        <p>
+                            Last donation: 4 months ago
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ================= RECEIVER DASHBOARD ================= -->
+
+<div id="receiverDashboard" class="dashboard hidden">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+            <div class="sidebar-logo">
+                <span class="brand-drop">🩸</span> <span>LifeLink</span>
+            </div>
+
+            <button class="menu-toggle-btn" onclick="toggleSidebarMenu(this)" aria-label="Open menu">
+                ⋮
+            </button>
+        </div>
+
+        <div class="sidebar-menu-dropdown">
+
+            <p class="menu-title">RECEIVER</p>
+
+            <button class="menu active">
+                <span class="menu-icon">📊</span> <span>Dashboard</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🚨</span> <span>My Requests</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🩸</span> <span>Find Donors</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🏥</span> <span>Hospitals</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">📍</span> <span>Nearby Blood Banks</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">👤</span> <span>My Profile</span>
+            </button>
+            <div class="menu-divider"></div>
+
+            <button class="logout" onclick="logout()">
+                <span class="menu-icon">↪</span> <span>Logout</span>
+            </button>
+
+        </div>
+
+
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Receiver Dashboard</h1>
+                <p>Find the right donor when you need it most.</p>
+            </div>
+
+            <div class="header-profile">
+
+                <div class="avatar receiver-avatar">
+                    R
+                </div>
+
+                <div>
+                    <strong>Receiver</strong>
+                    <small>Blood Requester</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- EMERGENCY REQUEST FORM -->
+
+        <section class="dashboard-card request-form-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>🚨 Create Blood Request</h2>
+
+                    <p>
+                        Enter the requirement and LifeLink
+                        will find suitable nearby donors.
+                    </p>
+                </div>
+
+                <span class="live-badge">
+                    ● REAL-TIME
+                </span>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="form-field">
+
+                    <label>Blood Group</label>
+
+                    <select id="receiverBloodGroup">
+
+                        <option value="">Select blood group</option>
+
+                        <option>O+</option>
+                        <option>O−</option>
+
+                        <option>A+</option>
+                        <option>A−</option>
+
+                        <option>B+</option>
+                        <option>B−</option>
+
+                        <option>AB+</option>
+                        <option>AB−</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>Units Required</label>
+
+                    <input
+                        type="number"
+                        id="receiverUnits"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>Hospital</label>
+
+                    <input
+                        type="text"
+                        id="receiverHospital"
+                        placeholder="Enter hospital name"
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>Urgency</label>
+
+                    <select id="receiverUrgency">
+
+                        <option>Critical</option>
+                        <option>Urgent</option>
+                        <option>Normal</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="location-input">
+
+                <div>
+                    <strong>📍 Your Location</strong>
+
+                    <p id="receiverLocation">
+                        Chennai, Tamil Nadu
+                    </p>
+                </div>
+
+                <button
+                    class="small-btn"
+                    onclick="getReceiverLocation()">
+                    Use Current Location
+                </button>
+
+            </div>
+
+
+            <button
+                class="request-blood-btn"
+                onclick="createBloodRequest()">
+
+                🚨 Request Blood Now
+
+            </button>
+
+        </section>
+
+
+        <!-- SEARCH RESULTS -->
+
+        <section class="dashboard-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>🧠 Smart Donor Matching</h2>
+
+                    <p>
+                        Donors ranked by blood compatibility,
+                        distance and availability.
+                    </p>
+                </div>
+
+                <span id="matchCount">
+                    0 Matches
+                </span>
+
+            </div>
+
+
+            <div id="donorResults">
+
+                <div class="empty-state">
+
+                    <div>🩸</div>
+
+                    <h3>No request created yet</h3>
+
+                    <p>
+                        Create a blood request above to
+                        find suitable donors.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div id="adminDashboard" class="dashboard hidden">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+            <div class="sidebar-logo">
+                <span class="brand-drop">🩸</span> <span>LifeLink</span>
+            </div>
+
+            <button class="menu-toggle-btn" onclick="toggleSidebarMenu(this)" aria-label="Open menu">
+                ⋮
+            </button>
+        </div>
+
+        <div class="sidebar-menu-dropdown">
+
+            <p class="menu-title">ADMIN</p>
+
+            <button class="menu active">
+                <span class="menu-icon">📊</span> <span>Dashboard</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🚨</span> <span>Emergency Requests</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🩸</span> <span>Donors</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🏥</span> <span>Hospitals</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🏦</span> <span>Blood Banks</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🧠</span> <span>Smart Matching</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">📈</span> <span>Analytics</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">📅</span> <span>Donation Camps</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">🏆</span> <span>Rewards</span>
+            </button>
+
+            <button class="menu">
+                <span class="menu-icon">⚙️</span> <span>Settings</span>
+            </button>
+            <div class="menu-divider"></div>
+
+            <button class="logout" onclick="logout()">
+                <span class="menu-icon">↪</span> <span>Logout</span>
+            </button>
+
+        </div>
+
+
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>Rescue Intelligence</h1>
+
+                <p>
+                    Real-time blood emergency coordination
+                </p>
+
+            </div>
+
+            <div class="header-profile">
+
+                <div class="avatar">
+                    AD
+                </div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <small>Hospital Coordinator</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- EMERGENCY BANNER -->
+
+        <section class="admin-banner">
+
+            <div>
+
+                <h2>
+                    🚨 Emergency Blood Coordination
+                </h2>
+
+                <p>
+                    Monitor active emergencies and coordinate
+                    donors, hospitals and blood banks.
+                </p>
+
+            </div>
+
+            <button
+                class="create-emergency"
+                onclick="createAdminEmergency()">
+
+                + Create Emergency
+
+            </button>
+
+        </section>
+
+
+        <!-- ADMIN STATS -->
+
+        <div class="stats-grid admin-stats">
+
+            <div class="stat">
+                <span>🚨</span>
+                <p>Active Emergencies</p>
+                <h2 id="adminEmergencies">12</h2>
+                <small>↑ 3 today</small>
+            </div>
+
+
+            <div class="stat">
+                <span>🩸</span>
+                <p>Available Donors</p>
+                <h2 id="adminDonors">1,248</h2>
+                <small>↑ 8.4%</small>
+            </div>
+
+
+            <div class="stat">
+                <span>🏥</span>
+                <p>Partner Hospitals</p>
+                <h2>26</h2>
+                <small>Active network</small>
+            </div>
+
+
+            <div class="stat">
+                <span>🏦</span>
+                <p>Blood Banks</p>
+                <h2>18</h2>
+                <small>Live sync</small>
+            </div>
+
+
+            <div class="stat">
+                <span>✅</span>
+                <p>Resolved</p>
+                <h2>3,842</h2>
+                <small>94.7% success</small>
+            </div>
+
+        </div>
+
+
+        <!-- COMMAND CENTER -->
+
+        <div class="admin-grid">
+
+            <section class="dashboard-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>🚨 Emergency Command Center</h2>
+
+                        <p>
+                            Currently active critical request
+                        </p>
+                    </div>
+
+                    <span class="critical-badge">
+                        CRITICAL
+                    </span>
+
+                </div>
+
+
+                <div class="admin-emergency">
+
+                    <div class="blood-circle">
+                        O+
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Request #LL1024
+                        </h2>
+
+                        <p>
+                            🏥 XYZ Multispeciality Hospital
+                        </p>
+
+                        <p>
+                            📍 4.2 km from current center
+                        </p>
+
+                        <strong>
+                            2 Units Required
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span>
+                        Emergency response progress
+                    </span>
+
+                    <strong>70%</strong>
+
+                </div>
+
+                <div class="progress">
+                    <div style="width:70%"></div>
+                </div>
+
+
+                <div class="mini-stats">
+
+                    <div>
+                        <strong>18</strong>
+                        <span>Suitable Donors</span>
+                    </div>
+
+                    <div>
+                        <strong>6</strong>
+                        <span>Notified</span>
+                    </div>
+
+                    <div>
+                        <strong>2</strong>
+                        <span>Accepted</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SMART MATCH -->
+
+            <section class="dashboard-card">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            🧠 Smart Donor Matches
+                        </h2>
+
+                        <p>
+                            Ranked by suitability + ETA
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="match">
+
+                    <div class="donor-mini-avatar">
+                        AK
+                    </div>
+
+                    <div class="match-details">
+
+                        <strong>
+                            Donor #1048
+                        </strong>
+
+                        <span>
+                            O+ • 2.4 km • ETA 7 min
+                        </span>
+
+                    </div>
+
+                    <div class="match-score">
+                        96%
+                    </div>
+
+                </div>
+
+
+                <div class="match">
+
+                    <div class="donor-mini-avatar">
+                        RS
+                    </div>
+
+                    <div class="match-details">
+
+                        <strong>
+                            Donor #2187
+                        </strong>
+
+                        <span>
+                            O+ • 3.1 km • ETA 9 min
+                        </span>
+
+                    </div>
+
+                    <div class="match-score">
+                        91%
+                    </div>
+
+                </div>
+
+
+                <div class="match">
+
+                    <div class="donor-mini-avatar">
+                        VP
+                    </div>
+
+                    <div class="match-details">
+
+                        <strong>
+                            Donor #3342
+                        </strong>
+
+                        <span>
+                            O+ • 4.8 km • ETA 12 min
+                        </span>
+
+                    </div>
+
+                    <div class="match-score">
+                        87%
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- BLOOD INVENTORY -->
+
+        <section class="dashboard-card">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        🏦 Blood Bank Inventory
+                    </h2>
+
+                    <p>
+                        Live partner stock
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="inventory-grid">
+
+                <div class="blood-inventory">
+                    <strong>O+</strong>
+                    <span>15 units</span>
+                    <div class="inventory-bar">
+                        <div style="width:75%"></div>
+                    </div>
+                </div>
+
+
+                <div class="blood-inventory">
+                    <strong>A+</strong>
+                    <span>18 units</span>
+                    <div class="inventory-bar">
+                        <div style="width:85%"></div>
+                    </div>
+                </div>
+
+
+                <div class="blood-inventory">
+                    <strong>B+</strong>
+                    <span>21 units</span>
+                    <div class="inventory-bar">
+                        <div style="width:90%"></div>
+                    </div>
+                </div>
+
+
+                <div class="blood-inventory low-stock">
+                    <strong>O−</strong>
+                    <span>2 units</span>
+                    <div class="inventory-bar">
+                        <div style="width:20%"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TIMELINE -->
+
+        <section class="dashboard-card">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>🔄 Emergency Timeline</h2>
+                    <p>Request #LL1024</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+
+                <div>
+                    <span>10:31 AM</span>
+                    <strong>Emergency Request Created</strong>
+                </div>
+
+                <div>
+                    <span>10:32 AM</span>
+                    <strong>Hospital Verified</strong>
+                </div>
+
+                <div>
+                    <span>10:33 AM</span>
+                    <strong>Smart Matching Started</strong>
+                </div>
+
+                <div>
+                    <span>10:34 AM</span>
+                    <strong>6 Donors Notified</strong>
+                </div>
+
+                <div>
+                    <span>10:36 AM</span>
+                    <strong>2 Donors Accepted</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast" class="toast">
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
